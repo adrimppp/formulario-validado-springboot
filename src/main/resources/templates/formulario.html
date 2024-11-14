@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <form action="/recibe-parametros-validado" method="post" th:object="${datosFormulario}">
+    <input type="hidden" id="iteraciones" name="iteraciones" th:value="${iteraciones}">
+    <label for="nombre">
+        <p th:text="#{formulario.usario}"></p>
+        <input type="text" th:field="*{nombre}">
+        <div th:each="error: ${#fields.errors('nombre')}"
+           th:text="${error}" class="error"></div>
+    </label>
+    <label>
+      <p th:text="#{formulario.clave}"></p>
+      <input type="text" th:field="*{clave}">
+      <div th:each="error: ${#fields.errors('clave')}"
+           th:text="${error}" class="error"></div>
+    </label>
+  </form>
+</body>
+</html>
