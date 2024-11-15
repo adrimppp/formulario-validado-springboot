@@ -5,20 +5,90 @@
   <title>Title</title>
 </head>
 <body>
-  <form action="/recibe-parametros-validado" method="post" th:object="${datosFormulario}">
+    <div th:replace="~{fragmentos/header}"></div>
+  <form action="recibe-parametros-validado" method="post" th:object="${datosFormulario}">
     <input type="hidden" id="iteraciones" name="iteraciones" th:value="${iteraciones}">
-    <label for="nombre">
-        <p th:text="#{formulario.usario}"></p>
-        <input type="text" th:field="*{nombre}">
-        <div th:each="error: ${#fields.errors('nombre')}"
-           th:text="${error}" class="error"></div>
-    </label>
-    <label>
-      <p th:text="#{formulario.clave}"></p>
-      <input type="text" th:field="*{clave}">
-      <div th:each="error: ${#fields.errors('clave')}"
-           th:text="${error}" class="error"></div>
-    </label>
+      <fieldset>
+          <legend th:text="#{formulario.datosUsuarios}"></legend>
+          <label for="nombre" th:text="#{formulario.nombre}" ></label>
+          <label>
+              <input type="text" tabindex="1" th:field="*{nombre}">
+          </label>
+          <div th:each="error : ${#fields.errors('nombre')}" th:text="${error}" class="error"></div>
+
+          <label for="clave" th:text="#{formulario.clave}" ></label>
+          <input type="password" name="clave" id="clave" tabindex="1" th:value="*{clave}">
+          <div th:each="error : ${#fields.errors('clave')}" th:text="${error}" class="error"></div>
+
+          <label for="confirmarClave" th:text="#{formulario.confirmarClave}" ></label>
+          <label>
+              <input type="password" name="confirmarClave" id="confirmarClave" tabindex="1" th:value="*{confirmarClave}">
+          </label>
+          <div th:each="error : ${#fields.errors('confirmarClave')}" th:text="${error}" class="error"></div>
+      </fieldset>
+
+      <fieldset>
+          <legend th:text="#{formulario.datosPersonales}"></legend>
+          <label th:text="#{formulario.genero}"></label>
+          <div th:each="genero : ${lista_generos}">
+              <label>
+                  <input type="radio" th:id="${genero.key}" th:value="${genero.value}" name="generoSeleccionado" th:checked="${datosFormulario.generoSeleccionado!=null && datosFormulario.generoSeleccionado.equalsIgnoreCase(genero.value)}"/>
+                  <span th:text="${genero.value}"></span>
+              </label>
+          </div>
+          <div th:each="error : ${#fields.errors('generoSeleccionado')}" th:text="${error}" class="error"></div>
+          <br>
+
+          <label for="fechaNacimiento" th:text="#{formulario.fechaDeNacimiento}"></label>
+          <label>
+              <input type="text" th:field="*{fechaNacimiento}">
+          </label>
+          <div th:each="error : ${#fields.errors('fechaNacimiento')}" th:text="${error}" class="error"></div>
+          <br>
+
+          <label for="edad" th:text="#{formulario.edad}"></label>
+          <label>
+              <input type="text" tabindex="1" th:field="*{edad}">
+          </label>
+          <div th:each="error : ${#fields.errors('edad')}" th:text="${error}" class="error"></div>
+          <br>
+        <label for="paisSeleccionado" th:text="#{formulario.pais}"></label>
+          <select id="paisSeleccionado" name="paisSeleccionado">
+              <option th:each="pais : ${lista_paises}"
+                      th:value="${pais.value.getIdiomas()}"
+                      th:text="${pais.value.getPais()}"
+                      th:selected="${datosFormulario.paisSeleccionado != null && datosFormulario.paisSeleccionado.equalsIgnoreCase(pais.value.getIdiomas())}">
+              </option>
+          </select>
+
+          <div th:each="error : ${#fields.errors('paisSeleccionado')}" th:text="${error}" class="error"></div>
+
+      </fieldset>
+
+
+
+      <fieldset>
+          <legend th:text="#{formulario.datosContacto}">
+
+          </legend>
+      </fieldset>
+
+      <fieldset>
+          <legend th:text="#{formulario.otros}"></legend>
+          <label th:text="#{formulario.aficiones}"></label>
+          <div th:each="aficion : ${lista_aficiones}">
+              <label>
+                  <input type="checkbox" th:id="${aficion.key}" th:value="${aficion.value}" name="aficionesSeleccionadas">
+                  <span th:text="${aficion.value}"></span>
+              </label>
+          </div>
+          <div th:each="error : ${#fields.errors('generoSeleccionado')}" th:text="${error}" class="error"></div>
+      </fieldset>
+
+      <fieldset>
+          <legend th:text="#{formulario.operacionesFormulario}"></legend>
+      </fieldset>
+      <input type="submit">
   </form>
 </body>
 </html>

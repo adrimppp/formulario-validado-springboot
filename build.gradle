@@ -25,6 +25,7 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.jetbrains:annotations:23.0.0'  // Asegúrate de usar la versión más reciente
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'

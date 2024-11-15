@@ -1,11 +1,14 @@
 package com.example.repintadoampliado.Model;
 
-import lombok.Getter;
+import lombok.*;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-
+@ToString
+@Setter
+@AllArgsConstructor
+@Getter
 public class Colecciones {
     @Getter
     private static Map<String, String> listaGeneros = new HashMap<>();
