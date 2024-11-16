@@ -29,13 +29,12 @@ public class Controlador {
 
     @PostMapping("recibe-parametros-validado")
     public String recibeParametrosValidado(Model model,
-                                           @ModelAttribute("datosFormulario") DatosFormulario datosFormulario,
+                                           @Valid @ModelAttribute("datosFormulario") DatosFormulario datosFormulario,
                                            BindingResult resultadoValidacion,
                                            @RequestParam (name="imagen_enviar.x", required = false) Integer coordenadasX,
                                            @RequestParam (name="imagen_enviar.y", required=false) Integer coordenadasY) {
         iteraciones++;
         //System.out.println(datosFormulario.toString());
-        System.out.println(coordenadasX);
         if(resultadoValidacion.hasErrors()) {
             model.addAttribute("mensajeNOK",
                     "El formulario tiene errores");

@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class ContrasenaValidator implements ConstraintValidator<Contrasena, String> {
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        Pattern pattern= Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%&])[A-Za-z\\d!#$%&]+$\n");
+        Pattern pattern= Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%&]).*$");
         Matcher matcher = pattern.matcher(s);
         try{
             return matcher.matches();

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
@@ -14,17 +15,19 @@
           <label>
               <input type="text" tabindex="1" th:field="*{nombre}">
           </label>
-          <div th:each="error : ${#fields.errors('nombre')}" th:text="${error}" class="error"></div>
-
+          <div th:each="error: ${#fields.errors('nombre')}"
+               th:text="${error}" class="error"></div>
+          <br>
           <label for="clave" th:text="#{formulario.clave}" ></label>
           <input type="password" name="clave" id="clave" tabindex="1" th:value="*{clave}">
           <div th:each="error : ${#fields.errors('clave')}" th:text="${error}" class="error"></div>
-
+          <br>
           <label for="confirmarClave" th:text="#{formulario.confirmarClave}" ></label>
           <label>
               <input type="password" name="confirmarClave" id="confirmarClave" tabindex="1" th:value="*{confirmarClave}">
           </label>
           <div th:each="error : ${#fields.errors('confirmarClave')}" th:text="${error}" class="error"></div>
+          <br>
       </fieldset>
 
       <fieldset>
@@ -158,14 +161,17 @@
       <input type="reset">
       <label for="imagen_enviar" th:text="#{formulario.enviarConImagen}"></label><br>
       <input id="imagen_enviar" src="/images/botonImagen.png" alt="imagen de envio" name="imagen_enviar" type="image" >
+      <!-- I18N
       <label for="idioma" th:text="#{formulario.idioma}"></label>
       <label>
-          <select th:field="*{paisSeleccionado}" >
+          <select name="idioma" id="idioma" >
               <option th:each="pais : ${lista_paises}"
                       th:value="${pais.getValue().getIdiomas()}"
-                      th:text="${pais.getValue().getIdiomas()}"></option>
+                      th:text="${pais.getValue().getIdiomas()}"
+                      th:selected="${pais.getValue().getIdiomas() == }"
+              ></option>
           </select>
-      </label>
+      </label>-->
   </form>
     <br>
     <p>imagen.x:<th:label th:text="${imagen_enviarX}"></th:label> e imagen.y: <th:label th:text="${imagen_enviarY}"></th:label></p>

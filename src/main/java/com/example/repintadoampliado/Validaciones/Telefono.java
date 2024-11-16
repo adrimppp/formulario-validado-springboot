@@ -12,11 +12,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({ FIELD })
 @Retention(RUNTIME)
-@Constraint(validatedBy = EmailValidator.class)
+@Constraint(validatedBy = TelefonoValidator.class)
 @Documented
 public @interface Telefono {
 
-    String message() default "{Telefono Invalido}";
+    String message() default "{telefono.invalido}";
 
     Class<?>[] groups() default { };
 

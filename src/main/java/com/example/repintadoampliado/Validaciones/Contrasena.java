@@ -12,11 +12,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({ FIELD })
 @Retention(RUNTIME)
-@Constraint(validatedBy = EmailValidator.class)
+@Constraint(validatedBy = ContrasenaValidator.class)
 @Documented
 public @interface Contrasena {
 
-    String message() default "{Contraseña Invalido}";
+    String message() default "{contrasena.invalido}";
 
     Class<?>[] groups() default { };
 
