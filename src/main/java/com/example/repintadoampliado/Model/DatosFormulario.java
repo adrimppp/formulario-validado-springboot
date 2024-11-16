@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @ToString
@@ -38,7 +39,7 @@ public class DatosFormulario {
     @Email
     private String email;
     private String url;
-    private String archivos;
+    private List<String> archivos;
     private List<String> musicasSeleccionadas;
     private List<String> aficionesSeleccionadas;
     private String comentarios;

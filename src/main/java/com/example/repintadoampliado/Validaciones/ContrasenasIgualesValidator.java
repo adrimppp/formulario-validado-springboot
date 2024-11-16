@@ -13,7 +13,6 @@ public class ContrasenasIgualesValidator implements ConstraintValidator<Contrase
 
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context) {
-        // Suponiendo que el objeto tiene dos campos de contraseña
         if (obj instanceof DatosFormulario userDto) {
             return userDto.getClave().equals(userDto.getConfirmarClave());
         }
