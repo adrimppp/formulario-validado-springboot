@@ -3,6 +3,8 @@ package com.example.repintadoampliado.Controller;
 import com.example.repintadoampliado.Model.DatosFormulario;
 import com.example.repintadoampliado.Model.Colecciones;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.format.annotation.NumberFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,8 @@ public class Controlador {
         modelo.addAttribute("lista_paises", Colecciones.getListaPaises());
         modelo.addAttribute("lista_musicas", Colecciones.getListaMusica());
     }
+    @NotBlank
+    @NumberFormat(style = NumberFormat.Style.NUMBER)
     private static int iteraciones=0;
     @GetMapping("devuelve-formulario-validado")
     public String devuelveFormularioValidado(@ModelAttribute("datosFormulario") DatosFormulario datosFormulario) {

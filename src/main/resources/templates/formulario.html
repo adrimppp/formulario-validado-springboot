@@ -28,10 +28,13 @@
           </label>
           <div th:each="error : ${#fields.errors('confirmarClave')}" th:text="${error}" class="error"></div>
           <br>
+          <!-- Botón para mostrar u ocultar las contraseñas -->
+          <button type="button" onclick="togglePasswords()">Mostrar/Ocultar Contraseñas</button>
+
       </fieldset>
 
       <fieldset>
-          <legend th:text="#{formulario.datosPersonales}"></legend>
+      <legend th:text="#{formulario.datosPersonales}"></legend>
           <label th:text="#{formulario.genero}"></label>
           <div th:each="genero : ${lista_generos}">
               <label>
@@ -40,6 +43,7 @@
               </label>
           </div>
           <div th:each="error : ${#fields.errors('generoSeleccionado')}" th:text="${error}" class="error"></div>
+          <input type="button"  onclick="deseleccionarGenero()" th:value="#{formulario.deseleccionarGenero}">
           <br>
 
           <label for="fechaNacimiento" th:text="#{formulario.fechaDeNacimiento}"></label>
@@ -130,7 +134,10 @@
               </label>
           </div>
           <div th:each="error : ${#fields.errors('generoSeleccionado')}" th:text="${error}" class="error"></div>
-
+          <input type="button" th:value="#{formulario.seleccionarTodasAficiones}" onclick="seleccionarTodasAficiones()" id="seleccionarTodasBtn">
+          <!-- Botón para deseleccionar todas las aficiones -->
+          <input type="button" th:value="#{formulario.deseleccionarTodasAficiones}" onclick="deseleccionarTodasAficiones()" id="deseleccionarTodasBtn">
+          <br>
           <label for="musicasSeleccionadas" th:text="#{formulario.musicasSeleccionar}"></label>
           <label>
               <select th:field="*{musicasSeleccionadas}" multiple size="2">
@@ -139,7 +146,12 @@
                           th:text="${musica.value}"
                   ></option>
               </select>
-          </label>
+          </label><!-- Botón para seleccionar todas las músicas -->
+          <input type="button" th:value="#{formulario.seleccionarTodasMusicas}" onclick="seleccionarTodasMusicas()" id="seleccionarTodasMusicasBtn">
+
+          <!-- Botón para deseleccionar todas las músicas -->
+          <input type="button" th:value="#{formulario.deseleccionarTodasMusicas}" onclick="deseleccionarTodasMusicas()" id="deseleccionarTodasMusicasBtn">
+
           <div th:each="error : ${#fields.errors('musicasSeleccionadas')}" th:text="${error}" class="error"></div>
       </fieldset>
 
@@ -172,8 +184,10 @@
               ></option>
           </select>
       </label>-->
+      <input type="button" th:value="#{formulario.deselecionarTodo}" onclick="deseleccionarTodos()" id="deseleccionarTodo">
   </form>
     <br>
     <p>imagen.x:<th:label th:text="${imagen_enviarX}"></th:label> e imagen.y: <th:label th:text="${imagen_enviarY}"></th:label></p>
+    <script src="/javaScript/funcionesAUsar.js" ></script>
 </body>
 </html>
