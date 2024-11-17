@@ -38,8 +38,9 @@
           <label th:text="#{formulario.genero}"></label>
           <div th:each="genero : ${lista_generos}">
               <label>
-                  <input type="radio" th:id="${genero.key}" th:value="${genero.value}" name="generoSeleccionado" th:checked="${datosFormulario.generoSeleccionado!=null && datosFormulario.generoSeleccionado.equalsIgnoreCase(genero.value)}"/>
-                  <span th:text="${genero.value}"></span>
+                  <input type="radio" th:id="${genero.key}" th:value="${genero.key}" name="generoSeleccionado"
+                         th:checked="${datosFormulario.generoSeleccionado != null && datosFormulario.generoSeleccionado.equalsIgnoreCase(genero.key)}" />
+                  <span th:text="#{'genero.'+${genero.key}}"></span> <!-- Traducción de los valores -->
               </label>
           </div>
           <div th:each="error : ${#fields.errors('generoSeleccionado')}" th:text="${error}" class="error"></div>
@@ -173,21 +174,31 @@
       <input type="reset">
       <label for="imagen_enviar" th:text="#{formulario.enviarConImagen}"></label><br>
       <input id="imagen_enviar" src="/images/botonImagen.png" alt="imagen de envio" name="imagen_enviar" type="image" >
-      <!-- I18N
-      <label for="idioma" th:text="#{formulario.idioma}"></label>
-      <label>
-          <select name="idioma" id="idioma" >
-              <option th:each="pais : ${lista_paises}"
-                      th:value="${pais.getValue().getIdiomas()}"
-                      th:text="${pais.getValue().getIdiomas()}"
-                      th:selected="${pais.getValue().getIdiomas() == }"
-              ></option>
-          </select>
-      </label>-->
+
       <input type="button" th:value="#{formulario.deselecionarTodo}" onclick="deseleccionarTodos()" id="deseleccionarTodo">
+      <span th:text="#{lang.change}"></span>:
+      <select id="locales">
+          <option value=""></option>
+          <option value="es" th:text="#{lang.es}"></option>
+          <option value="en" th:text="#{lang.en}"></option>
+      </select>
   </form>
+    <span th:text="#{lang.change}"></span>:
+
     <br>
     <p>imagen.x:<th:label th:text="${imagen_enviarX}"></th:label> e imagen.y: <th:label th:text="${imagen_enviarY}"></th:label></p>
     <script src="/javaScript/funcionesAUsar.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('devuelve-formulario-validado?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

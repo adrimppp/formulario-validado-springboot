@@ -38,7 +38,7 @@ public class Controlador {
                                            @RequestParam (name="imagen_enviar.x", required = false) Integer coordenadasX,
                                            @RequestParam (name="imagen_enviar.y", required=false) Integer coordenadasY) {
         iteraciones++;
-        //System.out.println(datosFormulario.toString());
+        System.out.println(datosFormulario.toString());
         if(resultadoValidacion.hasErrors()) {
             model.addAttribute("mensajeNOK",
                     "El formulario tiene errores");

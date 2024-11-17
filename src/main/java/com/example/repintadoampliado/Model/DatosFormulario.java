@@ -1,13 +1,13 @@
 package com.example.repintadoampliado.Model;
 
-import com.example.repintadoampliado.Validaciones.ClaveCoincide;
+import com.example.repintadoampliado.Validaciones.*;
 import com.example.repintadoampliado.Validaciones.Email;
-import com.example.repintadoampliado.Validaciones.Contrasena;
-import com.example.repintadoampliado.Validaciones.Telefono;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -28,10 +28,14 @@ public class DatosFormulario {
     @Size(min = 6, max = 12)
     @Contrasena
     private String confirmarClave;
+    @Genero
+    @NotBlank
     private String generoSeleccionado;
     private String paisSeleccionado;
+    @DateTimeFormat(pattern="dd/MM/yyyy")
+    @MayorDe18
     private LocalDate fechaNacimiento;
-    private int edad;
+    private Integer edad;
     @Digits(integer = 3, fraction = 2)
     private float peso;
     private String prefijoTelefonico;
