@@ -1,5 +1,6 @@
 package com.example.repintadoampliado.Model;
 
+import com.example.repintadoampliado.Validaciones.ClaveCoincide;
 import com.example.repintadoampliado.Validaciones.Email;
 import com.example.repintadoampliado.Validaciones.Contrasena;
 import com.example.repintadoampliado.Validaciones.Telefono;
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@ClaveCoincide
 public class DatosFormulario {
     @NotBlank(message = "{nombre.noblank}")
     private String nombre;
