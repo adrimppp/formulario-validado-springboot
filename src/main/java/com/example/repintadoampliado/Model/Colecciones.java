@@ -30,7 +30,7 @@ public class Colecciones {
         listaPaises.put("fr", new Pais("Francia", "Francés", "33",false,"francia.png"));
         listaPaises.put("it", new Pais("Italia", "Italiano", "39", false, "italia.jpg"));
         listaPaises.put("pt", new Pais("Portugal", "Portugués", "351", false, "portugal.jpg"));
-        listaPaises.put("en", new Pais("Reino unido", "Ingl", "44", true, "reino_unido.jpg"));
+        listaPaises.put("en", new Pais("Reino unido", "Ingles", "44", true, "reino_unido.jpg"));
 
 
         listaMusica.put("E", "Electronica");

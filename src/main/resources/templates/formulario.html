@@ -66,7 +66,7 @@
               <select th:field="*{paisSeleccionado}">
                   <option th:each="pais : ${lista_paises}"
                           th:value="${pais.value.getIdiomas()}"
-                          th:text="${pais.value.getPais()}"
+                          th:text="#{'paises.'+${pais.key}}"
                           th:selected="${datosFormulario.paisSeleccionado != null && datosFormulario.paisSeleccionado.equalsIgnoreCase(pais.value.getIdiomas())}">
                   </option>
               </select>
@@ -131,10 +131,10 @@
           <div th:each="aficion : ${lista_aficiones}">
               <label>
                   <input type="checkbox" th:field="*{aficionesSeleccionadas}" th:value="${aficion.value}" name="aficionesSeleccionadas">
-                  <span th:text="${aficion.value}"></span>
+                  <span th:text="#{'aficiones.'+${aficion.value}}"></span>
               </label>
           </div>
-          <div th:each="error : ${#fields.errors('generoSeleccionado')}" th:text="${error}" class="error"></div>
+          <div th:each="error : ${#fields.errors('aficionesSeleccionadas')}" th:text="${error}" class="error"></div>
           <input type="button" th:value="#{formulario.seleccionarTodasAficiones}" onclick="seleccionarTodasAficiones()" id="seleccionarTodasBtn">
           <!-- Botón para deseleccionar todas las aficiones -->
           <input type="button" th:value="#{formulario.deseleccionarTodasAficiones}" onclick="deseleccionarTodasAficiones()" id="deseleccionarTodasBtn">
