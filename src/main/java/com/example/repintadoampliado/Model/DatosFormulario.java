@@ -31,13 +31,17 @@ public class DatosFormulario {
     @Genero
     @NotBlank
     private String generoSeleccionado;
+    @Paiss
     private String paisSeleccionado;
     @DateTimeFormat(pattern="dd/MM/yyyy")
     @MayorDe18
     private LocalDate fechaNacimiento;
+    @Null
     private Integer edad;
     @Digits(integer = 3, fraction = 2)
-    private float peso;
+    @Null
+    private Float peso;
+    @Prefijo
     private String prefijoTelefonico;
     @Telefono
     private String telefono;
@@ -45,8 +49,11 @@ public class DatosFormulario {
     private String email;
     private String url;
     private List<String> archivos;
+    @NotEmpty
     private List<String> musicasSeleccionadas;
+    @Aficiones
     private List<String> aficionesSeleccionadas;
     private String comentarios;
+    @AssertTrue
     private boolean licencia;
 }

@@ -2,6 +2,8 @@ package com.example.repintadoampliado.Model;
 
 import lombok.*;
 
+import java.lang.annotation.Annotation;
+
 @ToString
 @Setter
 @AllArgsConstructor

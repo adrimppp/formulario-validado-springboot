@@ -13,23 +13,23 @@
           <legend th:text="#{formulario.datosUsuarios}"></legend>
           <label for="nombre" th:text="#{formulario.nombre}" ></label>
           <label>
-              <input type="text" tabindex="1" th:field="*{nombre}">
+              <input type="text" tabindex="1" th:field="*{nombre}" th:placeholder="#{placeholder.nombre}">
           </label>
           <div th:each="error: ${#fields.errors('nombre')}"
                th:text="${error}" class="error"></div>
           <br>
           <label for="clave" th:text="#{formulario.clave}" ></label>
-          <input type="password" name="clave" id="clave" tabindex="1" th:value="*{clave}">
+          <input type="password" name="clave" id="clave" tabindex="1" th:value="*{clave}" th:placeholder="#{placeholder.clave}">
           <div th:each="error : ${#fields.errors('clave')}" th:text="${error}" class="error"></div>
           <br>
           <label for="confirmarClave" th:text="#{formulario.confirmarClave}" ></label>
           <label>
-              <input type="password" name="confirmarClave" id="confirmarClave" tabindex="1" th:value="*{confirmarClave}">
+              <input type="password" name="confirmarClave" id="confirmarClave" tabindex="1" th:value="*{confirmarClave}" th:placeholder="#{placeholder.clave}">
           </label>
           <div th:each="error : ${#fields.errors('confirmarClave')}" th:text="${error}" class="error"></div>
           <br>
           <!-- Botón para mostrar u ocultar las contraseñas -->
-          <button type="button" onclick="togglePasswords()">Mostrar/Ocultar Contraseñas</button>
+          <button type="button" onclick="togglePasswords()" th:text="#{formulario.botonContrasenas}"></button>
 
       </fieldset>
 
@@ -49,14 +49,14 @@
 
           <label for="fechaNacimiento" th:text="#{formulario.fechaDeNacimiento}"></label>
           <label>
-              <input type="text" th:field="*{fechaNacimiento}">
+              <input type="text" th:field="*{fechaNacimiento}" th:placeholder="#{placeholder.fechaNacimiento}">
           </label>
           <div th:each="error : ${#fields.errors('fechaNacimiento')}" th:text="${error}" class="error"></div>
           <br>
 
-          <label for="edad" th:text="#{formulario.edad}"></label>
+          <label for="edad" th:text="#{formulario.edad}" ></label>
           <label>
-              <input type="text" tabindex="1" th:field="*{edad}">
+              <input type="text" tabindex="1" th:field="*{edad}" th:placeholder="#{placeholder.edad}">
           </label>
           <div th:each="error : ${#fields.errors('edad')}" th:text="${error}" class="error"></div>
           <br>
@@ -65,7 +65,7 @@
           <label>
               <select th:field="*{paisSeleccionado}">
                   <option th:each="pais : ${lista_paises}"
-                          th:value="${pais.value.getIdiomas()}"
+                          th:value="${pais.key}"
                           th:text="#{'paises.'+${pais.key}}"
                           th:selected="${datosFormulario.paisSeleccionado != null && datosFormulario.paisSeleccionado.equalsIgnoreCase(pais.value.getIdiomas())}">
                   </option>
@@ -74,7 +74,7 @@
           <div th:each="error : ${#fields.errors('paisSeleccionado')}" th:text="${error}" class="error"></div>
           <br>
 
-          <label for="peso" th:text="#{formulario.peso}"></label>
+          <label for="peso" th:text="#{formulario.peso}" th:placeholder="#{placeholder.peso}"></label>
           <input type="text" th:field="*{peso}">
           <div th:each="error : ${#fields.errors('peso')}" th:text="${error}" class="error"></div>
 
@@ -98,21 +98,21 @@
 
           <label for="telefono" th:text="#{formulario.telefono}"></label>
           <label>
-              <input type="text" th:field="*{telefono}">
+              <input type="text" th:field="*{telefono}" th:placeholder="#{placeholder.telefono}">
           </label>
           <div th:each="error : ${#fields.errors('telefono')}" th:text="${error}" class="error"></div>
           <br>
 
           <label for="email" th:text="#{formulario.email}"></label>
           <label>
-              <input type="text" th:field="*{email}">
+              <input type="text" th:field="*{email}" th:placeholder="#{placeholder.email}">
           </label>
           <div th:each="error : ${#fields.errors('email')}" th:text="${error}" class="error"></div>
           <br>
 
           <label for="url" th:text="#{formulario.url}"></label>
           <label>
-              <input type="text" th:field="*{url}">
+              <input type="text" th:field="*{url}" th:placeholder="#{placeholder.url}">
           </label>
           <div th:each="error : ${#fields.errors('url')}" th:text="${error}" class="error"></div>
           <br>
@@ -121,9 +121,8 @@
       <fieldset>
           <legend th:text="#{formulario.otros}"></legend>
           <label for="archivos" th:text="#{formulario.archivos}"></label>
-          <label>
-              <input type="file" th:field="*{archivos}">
-          </label>
+          <label th:text="#{formulario.enviarArchivo}" for="subir_archivo"></label>
+          <input type="file" th:field="*{archivos}" id="subir_archivo" name="subir_archivo">
           <div th:each="error : ${#fields.errors('archivos')}" th:text="${error}" class="error"></div>
           <br>
 
