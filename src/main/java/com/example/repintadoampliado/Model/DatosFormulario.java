@@ -36,10 +36,8 @@ public class DatosFormulario {
     @DateTimeFormat(pattern="dd/MM/yyyy")
     @MayorDe18
     private LocalDate fechaNacimiento;
-    @Null
     private Integer edad;
     @Digits(integer = 3, fraction = 2)
-    @Null
     private Float peso;
     @Prefijo
     private String prefijoTelefonico;

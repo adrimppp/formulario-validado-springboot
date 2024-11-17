@@ -6,6 +6,8 @@
   <title>Title</title>
 </head>
 <body>
+        <h3 class="error" th:text="${mensajeNOK}"></h3>
+        <h3 class="correcto" th:text="${mensajeOK}"></h3>
     <div th:replace="~{fragmentos/header}"></div>
   <form action="recibe-parametros-validado" method="post" th:object="${datosFormulario}">
     <input type="hidden" id="iteraciones" name="iteraciones" th:value="${iteraciones}">
