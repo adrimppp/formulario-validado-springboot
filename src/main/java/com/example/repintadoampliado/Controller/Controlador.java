@@ -26,8 +26,10 @@ public class Controlador {
     @NumberFormat(style = NumberFormat.Style.NUMBER)
     private static int iteraciones=0;
     @GetMapping("devuelve-formulario-validado")
-    public String devuelveFormularioValidado(@ModelAttribute("datosFormulario") DatosFormulario datosFormulario) {
+    public String devuelveFormularioValidado(Model model) {
+        DatosFormulario predeterminado = new DatosFormulario("Lola",null,null,null,"pt",null,null,null,"33",null,null,null,null,null,null,null,false);
         iteraciones++;
+        model.addAttribute("datosFormulario ", predeterminado);
         return "formulario";
     }
 

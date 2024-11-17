@@ -2,6 +2,7 @@ package com.example.repintadoampliado.Model;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -10,6 +11,7 @@ import java.util.TreeMap;
 @AllArgsConstructor
 @Getter
 public class Colecciones {
+
     @Getter
     private static Map<String, String> listaGeneros = new HashMap<>();
 
