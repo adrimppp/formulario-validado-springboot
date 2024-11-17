@@ -3,21 +3,18 @@ package com.example.repintadoampliado.Validaciones;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class TelefonoValidator implements ConstraintValidator<Telefono, String> {
+
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        if(s.isEmpty()){
-            return true;
+        // Check if the input is null or empty
+        if (s == null || s.isEmpty()) {
+            return false; // or return true if you want to allow empty/null values
         }
-        Pattern pattern= Pattern.compile("^\\d{9}$\n");
-        Matcher matcher = pattern.matcher(s);
-        try{
-            return matcher.matches();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
+        // Continue with the actual validation logic for the phone number
+        // For example, checking if it matches a phone number pattern:
+        String phonePattern = "^\\+?[0-9]{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}$";
+        return s.matches(phonePattern); // Example regex for phone number validation
     }
 }
