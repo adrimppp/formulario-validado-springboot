@@ -42,6 +42,7 @@ public class DatosFormulario {
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @MayorDe18(message = "{fechaNacimiento.mayorDe18}") // Validación personalizada de mayor de 18 años
+    @NotNull(message="{fecha.obligatoria}")
     private LocalDate fechaNacimiento;
 
     private Integer edad;

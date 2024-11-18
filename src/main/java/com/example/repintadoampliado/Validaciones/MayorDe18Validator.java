@@ -16,9 +16,6 @@ public class MayorDe18Validator implements ConstraintValidator<MayorDe18, LocalD
     public boolean isValid(LocalDate fechaNacimiento, ConstraintValidatorContext context) {
 
         if (fechaNacimiento == null) {
-            // Si la fecha de nacimiento es nula, se podría considerar inválida, pero también puedes validarlo usando @NotNull
-            context.buildConstraintViolationWithTemplate("La fecha de nacimiento no puede ser nula.")
-                    .addConstraintViolation(); // Añade un mensaje de error en caso de ser nulo
             return false;
         }
 

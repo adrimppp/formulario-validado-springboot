@@ -7,11 +7,6 @@ import java.util.List;
 
 public class AficionesValidator implements ConstraintValidator<Aficiones, List<String>> {
     @Override
-    public void initialize(Aficiones constraintAnnotation) {
-        // Aquí puedes inicializar cualquier recurso si lo necesitas (en este caso no es necesario).
-    }
-
-    @Override
     public boolean isValid(List<String> aficiones, ConstraintValidatorContext context) {
         // Verifica si la lista es nula o tiene al menos dos elementos
         if (aficiones == null) {
