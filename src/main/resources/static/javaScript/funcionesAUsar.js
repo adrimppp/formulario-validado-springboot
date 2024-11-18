@@ -1,3 +1,4 @@
+
 // Función para mostrar/ocultar las contraseñas
 function togglePasswords() {
     // Obtener los elementos de los campos de contraseñas
@@ -63,4 +64,21 @@ function deseleccionarTodos(){
     deseleccionarGenero();
     deseleccionarTodasMusicas();
     deseleccionarTodasAficiones();
+}
+
+function confirmaReseteo(nombreFormulario,mensaje) {
+
+    var mensaje = mensaje;
+    if (confirm(mensaje)) { // si se pulsa Aceptar
+        // se resetea el formulario
+        document.getElementById(nombreFormulario).reset();
+    }
+}
+
+function confirmaEnvio(nombreFormulario, mensaje) {
+    // Si el mensaje existe y el usuario confirma la acción
+    if (confirm(mensaje)) {
+        // Si el usuario hace clic en "Aceptar", se envía el formulario
+        document.getElementById(nombreFormulario).submit(); // Enviar el formulario
+    }
 }

@@ -15,8 +15,7 @@ public class Configurations implements WebMvcConfigurer {
     @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();
-        slr.setDefaultLocale(Locale.of("es", "ES")); // Español de España
-        // slr.setDefaultLocale(Locale.of("es", "MX")); // Español de México (opcional)
+        slr.setDefaultLocale(new Locale("es", "ES"));
         return slr;
     }
 

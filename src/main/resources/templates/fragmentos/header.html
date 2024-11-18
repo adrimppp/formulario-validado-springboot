@@ -1,5 +1,13 @@
 <header th:fragment="header">
-    <p>Fragmento</p>
+    <h3>Información del Cliente</h3>
+    <p>
+        Dirección IP del cliente HTTP: <span th:text="${clientIp}"></span> |
+        Navegador usado en el cliente HTTP: <span th:text="${userAgent}"></span><br>
+        Sistema operativo del equipo donde se ejecuta el navegador: <span th:text="${os}"></span> |
+        Motor de renderización usado por el navegador: <span th:text="${renderEngine}"></span><br>
+        Nombre de host solicitado por el cliente HTTP: <span th:text="${hostName}"></span> |
+        Idioma y locale preferidos por el cliente HTTP: <span th:text="${locale}"></span>
+    </p>
     <!--/* No envia comentario */-->
     <!--/* th:replace="~{{'vistas/'} + ${vista}}" */-->
     <!--Asteriscos solo para th:fields-->
