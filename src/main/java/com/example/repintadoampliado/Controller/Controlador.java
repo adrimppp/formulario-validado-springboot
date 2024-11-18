@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("formulario")
 public class Controlador {
+    //Añade atributos globales a la clase
     @ModelAttribute
     private void añadeAtributosGlobalesAlModelo(Model modelo) {
         modelo.addAttribute("lista_generos", Colecciones.getListaGeneros());
@@ -21,6 +22,8 @@ public class Controlador {
         modelo.addAttribute("lista_paises", Colecciones.getListaPaises());
         modelo.addAttribute("lista_musicas", Colecciones.getListaMusica());
     }
+
+    //Primer controlador, devuelve el formulario con un usuario predeterminado
     @NotBlank
     @NumberFormat(style = NumberFormat.Style.NUMBER)
     private static int iteraciones=0;
@@ -55,6 +58,7 @@ public class Controlador {
         return "formulario";
     }
 
+    //Primer controlador, devuelve el formulario con los datos enviados
     @PostMapping("recibe-parametros-validado")
     public String recibeParametrosValidado(Model model,
                                            @Valid @ModelAttribute("datosFormulario") DatosFormulario datosFormulario,
