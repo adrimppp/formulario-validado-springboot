@@ -70,7 +70,7 @@ public class Controlador {
                                            @RequestParam (name="imagen_enviar.y", required=false) Integer coordenadasY,
                                            HttpServletRequest request, @RequestHeader("User-Agent") String userAgent) {
         iteraciones++;
-        List<String>noNulos= Utility.noNulos(datosFormulario);
+        String noNulos= Utility.noNulos(datosFormulario);
         System.out.println(datosFormulario.toString());
         if(resultadoValidacion.hasErrors()) {
             model.addAttribute("mensajeNOK",

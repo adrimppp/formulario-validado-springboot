@@ -8,11 +8,6 @@
 <body>
     <div th:replace="~{/fragmentos/header}"></div>
     <div th:replace="~{/fragmentos/cuerpoFormulario}"></div>
-    <div th:text="#{camposEnviados}"></div>
-    <div th:each=" noNulo: ${ noNulos}">
-        <div th:text="${noNulo}"></div>
-    </div>
-    <div th:text="#{parametrosEnviados}"></div>
-    <div th:text="${noNulos.size()}"></div>
+    <div th:text="${noNulos}"></div>
 </body>
 </html>

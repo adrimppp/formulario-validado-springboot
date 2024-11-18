@@ -193,7 +193,14 @@
 <script src="/javaScript/funcionesAUsar.js" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
 </script>
-  <script src="/javaScript/cambiarIdioma.js"></script>
-
+  <script >
+    $(document).ready(function() {
+      $("#locales").change(function () {
+        var selectedOption = $('#locales').val();
+        if (selectedOption != ''){
+          window.location.replace('devuelve-formulario-validado?lang=' + selectedOption);
+        }
+      });
+    });
+  </script>
 </div>
-<div th:for="${camposNoNulos}"></div>

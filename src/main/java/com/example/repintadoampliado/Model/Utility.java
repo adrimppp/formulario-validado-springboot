@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Utility {
 
-    public static List<String> noNulos(DatosFormulario datosFormulario) {
+    public static String noNulos(DatosFormulario datosFormulario) {
         List<String> list = new ArrayList<>();
 
         // Validación para cada campo con prefijo si es necesario
@@ -52,6 +52,12 @@ public class Utility {
             list.add("Licencia Aceptada");
         }
 
-        return list;
+        // Generar el resultado como un solo String concatenado
+        String resultado = String.join("\n", list); // Unir elementos con salto de línea
+
+        // Agregar el tamaño de la lista al final
+        resultado += "\n\nTotal de datos no nulos: " + list.size();
+
+        return resultado;
     }
 }
