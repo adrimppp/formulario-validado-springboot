@@ -179,6 +179,10 @@
     <option></option>
     <div th:each="pais : ${lista_paises}">
     <option th:if="${pais.getValue().isMuestraIdioma()}" th:value="${pais.getKey()}" th:text="#{'lang.'+${pais.getKey()}}"></option>
+    <!--
+    <option value="es" th:text="#{lang.es}"></option>
+    <option value="en" th:text="#{lang.en}"></option>
+    -->
     </div>
   </select>
 </form>
@@ -189,8 +193,14 @@
 <script src="/javaScript/funcionesAUsar.js" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
 </script>
-  <script src="/javaScript/cambiarIdioma.js"></script>
-
+  <script >
+    $(document).ready(function() {
+      $("#locales").change(function () {
+        var selectedOption = $('#locales').val();
+        if (selectedOption != ''){
+          window.location.replace('devuelve-formulario-validado?lang=' + selectedOption);
+        }
+      });
+    });
+  </script>
 </div>
-
-
