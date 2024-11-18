@@ -179,10 +179,6 @@
     <option></option>
     <div th:each="pais : ${lista_paises}">
     <option th:if="${pais.getValue().isMuestraIdioma()}" th:value="${pais.getKey()}" th:text="#{'lang.'+${pais.getKey()}}"></option>
-    <!--
-    <option value="es" th:text="#{lang.es}"></option>
-    <option value="en" th:text="#{lang.en}"></option>
-    -->
     </div>
   </select>
 </form>
