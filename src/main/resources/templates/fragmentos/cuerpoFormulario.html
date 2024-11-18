@@ -1,6 +1,6 @@
 <div th:fragment="formulario">
-<h3 class="error" th:text="${mensajeNOK}"></h3>
-<h3 class="correcto" th:text="${mensajeOK}"></h3>
+<h3 class="error" th:if="${mensajeNOK!=null}" th:text="#{mensajeNOK}"></h3>
+<h3 class="correcto" th:if="${mensajeOK!=null}" th:text="#{mensajeOK}"></h3>
 <form action="recibe-parametros-validado" method="post" th:object="${datosFormulario}" id="formulario">
   <input type="hidden" id="iteraciones" name="iteraciones" th:value="${iteraciones}">
   <fieldset>
@@ -14,17 +14,17 @@
          th:text="${error}" class="error"></div>
     <br>
     <label for="clave" th:text="#{formulario.clave}" ></label>
-    <input type="password" name="clave" id="clave" tabindex="1" th:value="*{clave}" th:placeholder="#{placeholder.clave}">
+    <input type="password" name="clave" id="clave" tabindex="2" th:value="*{clave}" th:placeholder="#{placeholder.clave}">
     <div th:each="error : ${#fields.errors('clave')}" th:text="${error}" class="error"></div>
     <br>
     <label for="confirmarClave" th:text="#{formulario.confirmarClave}" ></label>
     <label>
-      <input type="password" name="confirmarClave" id="confirmarClave" tabindex="1" th:value="*{confirmarClave}" th:placeholder="#{placeholder.clave}">
+      <input type="password" name="confirmarClave" id="confirmarClave" tabindex="3" th:value="*{confirmarClave}" th:placeholder="#{placeholder.clave}">
     </label>
     <div th:each="error : ${#fields.errors('confirmarClave')}" th:text="${error}" class="error"></div>
     <br>
     <!-- Botón para mostrar u ocultar las contraseñas -->
-    <button type="button" onclick="togglePasswords()" th:text="#{formulario.botonContrasenas}"></button>
+    <button type="button" onclick="togglePasswords()" th:text="#{formulario.botonContrasenas}" tabindex="4"></button>
 
   </fieldset>
 
@@ -157,7 +157,7 @@
       <textarea rows="10" cols="50" th:field="*{comentarios}" ></textarea>
     </label>
     <div th:each="error : ${#fields.errors('comentarios')}" th:text="${error}" class="error"></div>
-
+    <br>
     <label for="licencia" th:text="#{formulario.licencia}"></label>
     <label>
       <input type="checkbox" th:field="*{licencia}">
@@ -165,11 +165,11 @@
     <br>
     <div th:each="error : ${#fields.errors('licencia')}" th:text="${error}" class="error"></div>
   </fieldset>
-  <input type="submit" onclick="confirmaEnvio('formulario', document.getElementById('messagesEnviar').getAttribute('data-mensaje-envio'));">
+  <input type="submit" th:value="#{boton.enviar}" onclick="confirmaEnvio('formulario', document.getElementById('messagesEnviar').getAttribute('data-mensaje-envio'));">
   <div id="messages" th:attr="data-mensaje-reseteo=#{formulario.confirmacionReset}"></div>
   <div id="messagesEnviar" th:attr="data-mensaje-envio=#{formulario.confirmacionEnvio}"></div>
 
-  <input type="reset" onclick="confirmaReseteo('formulario', document.getElementById('messages').getAttribute('data-mensaje-reseteo'));">
+  <input type="reset" th:value="#{boton.resetear}" onclick="confirmaReseteo('formulario', document.getElementById('messages').getAttribute('data-mensaje-reseteo'));">
   <label for="imagen_enviar" th:text="#{formulario.enviarConImagen}"></label><br>
   <input id="imagen_enviar" src="/images/botonImagen.png" alt="imagen de envio" name="imagen_enviar" type="image" >
 

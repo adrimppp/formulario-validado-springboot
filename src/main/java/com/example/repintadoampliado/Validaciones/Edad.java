@@ -2,19 +2,17 @@ package com.example.repintadoampliado.Validaciones;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target({ ElementType.TYPE, ElementType.FIELD })
+@Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ClaveCoincideValidator.class)
-public @interface ClaveCoincide {
-
-    String message() default "Las claves no coinciden";
-
+@Constraint(validatedBy = EdadValidator.class)
+public @interface Edad {
+    String message() default "{edad.coincideNacimiento}";
     Class<?>[] groups() default {};
-
     Class<? extends Payload>[] payload() default {};
 }

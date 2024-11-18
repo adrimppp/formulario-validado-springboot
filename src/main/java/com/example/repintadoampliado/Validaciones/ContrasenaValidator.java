@@ -10,19 +10,16 @@ public class ContrasenaValidator implements ConstraintValidator<Contrasena, Stri
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        // Check if the input is null or empty
         if (s == null) {
-            return false; // or true, depending on your validation logic
+            return false;
         }
 
-        // Define the regex pattern for password validation
         Pattern pattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%&]).*$");
 
-        // Create a matcher object and apply the regex
         Matcher matcher = pattern.matcher(s);
 
         try {
-            return matcher.matches(); // Validate the password against the pattern
+            return matcher.matches();
         } catch (Exception e) {
             throw new RuntimeException("Error during password validation", e);
         }

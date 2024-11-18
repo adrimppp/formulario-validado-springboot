@@ -17,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @ClaveCoincide
+@Edad
 public class DatosFormulario {
 
     @NotBlank(message = "{nombre.noblank}")

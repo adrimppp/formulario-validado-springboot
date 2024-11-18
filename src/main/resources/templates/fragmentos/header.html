@@ -1,19 +1,11 @@
 <header th:fragment="header">
-    <h3>Información del Cliente</h3>
+    <h3 th:text="#{client.ip}">Información del Cliente</h3>
     <p>
-        Dirección IP del cliente HTTP: <span th:text="${clientIp}"></span> |
-        Navegador usado en el cliente HTTP: <span th:text="${userAgent}"></span><br>
-        Sistema operativo del equipo donde se ejecuta el navegador: <span th:text="${os}"></span> |
-        Motor de renderización usado por el navegador: <span th:text="${renderEngine}"></span><br>
-        Nombre de host solicitado por el cliente HTTP: <span th:text="${hostName}"></span> |
-        Idioma y locale preferidos por el cliente HTTP: <span th:text="${locale}"></span>
+        <span th:text="#{client.ip}"></span> <span th:text="${clientIp}"></span> |
+        <span th:text="#{client.userAgent}"></span> <span th:text="${userAgent}"></span><br>
+        <span th:text="#{client.os}"></span> <span th:text="${os}"></span> |
+        <span th:text="#{client.renderEngine}"></span> <span th:text="${renderEngine}"></span><br>
+        <span th:text="#{client.hostName}"></span> <span th:text="${hostName}"></span> |
+        <span th:text="#{client.locale}"></span> <span th:text="${locale}"></span>
     </p>
-    <!--/* No envia comentario */-->
-    <!--/* th:replace="~{{'vistas/'} + ${vista}}" */-->
-    <!--Asteriscos solo para th:fields-->
-    <!--arroba url contenido statico-->
-    <!-- # messages.propierties-->
-    <!-- $ cosas de la vista-->
-    <!-- ~ fragmentos-->
-    <!-- Envia comentario -->
 </header>
