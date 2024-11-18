@@ -2,6 +2,7 @@ package com.example.repintadoampliado.Controller;
 
 import com.example.repintadoampliado.Model.DatosFormulario;
 import com.example.repintadoampliado.Model.Colecciones;
+import com.example.repintadoampliado.Model.Utility;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("formulario")
@@ -67,6 +70,7 @@ public class Controlador {
                                            @RequestParam (name="imagen_enviar.y", required=false) Integer coordenadasY,
                                            HttpServletRequest request, @RequestHeader("User-Agent") String userAgent) {
         iteraciones++;
+        List<String>noNulos= Utility.noNulos(datosFormulario);
         System.out.println(datosFormulario.toString());
         if(resultadoValidacion.hasErrors()) {
             model.addAttribute("mensajeNOK",
@@ -76,6 +80,8 @@ public class Controlador {
             model.addAttribute("mensajeOK",
                     "El formulario no tiene errores");
         }
+
+
         // Obtener dirección IP del cliente
         String clientIp = request.getRemoteAddr();
 
@@ -101,6 +107,7 @@ public class Controlador {
         model.addAttribute("imagen_enviarX", coordenadasX);
         model.addAttribute("imagen_enviarY", coordenadasY);
         model.addAttribute("iteraciones", iteraciones);
+        model.addAttribute("noNulos", noNulos);
         return "formulario";
     }
     // Método para extraer el sistema operativo desde el User-Agent
